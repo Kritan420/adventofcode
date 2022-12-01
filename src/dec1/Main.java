@@ -12,11 +12,8 @@ public class Main {
 
         Scanner s = new Scanner(new File("./src/dec1/input.txt"), "UTF-8");
 
-        s.useDelimiter("\n");
-
         int boba = 0;
         
-
         while (s.hasNextLine())  {
             String bob = s.nextLine();   
             
