@@ -26,17 +26,13 @@ public class Main {
           
         }
 
-        int bigg = 0;
-        int index = 0;
-        for (int i = 0; i < list.size(); i++) {
-            if (bigg < list.get(i)) {
-                bigg = list.get(i);
-                index = i;
-            }
-        }
+        list.sort((a,b) -> b.compareTo(a));
 
-        System.out.println("List size: " + list.size());
-        System.out.println("Index of biggest: " + index);
-        System.out.println("Amount of biggest: " + bigg);
+        System.out.println("\nAmount of biggest: " + list.get(0)); 
+
+
+        boba = list.get(0) + list.get(1) + list.get(2);
+
+        System.out.println("\nSum of top 3: " + boba);
     }
 }
