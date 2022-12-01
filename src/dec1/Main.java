@@ -28,11 +28,11 @@ public class Main {
 
         list.sort((a,b) -> b.compareTo(a));
 
-        System.out.println("\nAmount of biggest: " + list.get(0)); 
+        System.out.println("-------------------------\nAmount of biggest: " + list.get(0)); 
 
 
         boba = list.get(0) + list.get(1) + list.get(2);
 
-        System.out.println("\nSum of top 3: " + boba);
+        System.out.println("-------------------------\nSum of top 3: " + boba + "\n-------------------------");
     }
 }
