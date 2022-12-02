@@ -20,11 +20,12 @@ public class rockpeepee {
 
         int sum = 0;
         String line;
+        char oppo, you;
         
         try {
             while (!(line = s.nextLine()).isEmpty()) {
-                 char oppo = line.charAt(0) == 'A' ? 'R' : line.charAt(0) == 'B' ? 'P' : line.charAt(0) == 'C' ? 'S' : 0;
-                 char you = line.charAt(2);
+                 oppo = line.charAt(0) == 'A' ? 'R' : line.charAt(0) == 'B' ? 'P' : line.charAt(0) == 'C' ? 'S' : 0;
+                 you = line.charAt(2);
 
                  // Part one
                  //you = you == 'X' ? 'R' : you == 'Y' ? 'P' : you == 'Z' ? 'S' : 0;
