@@ -31,9 +31,8 @@ public class rockpeepee {
      
                  // Part two
                  you = you == 'X' ? beats.get(oppo) : you == 'Y' ? oppo : you == 'Z' ? oppo == 'R' ? 'P' : oppo == 'P' ? 'S' : oppo == 'S' ? 'R' : 0 : 0;
-                 
-                 sum += points.get(you);
-                 sum += beats.get(you) == oppo ? 6 : you == oppo ? 3 : 0;
+    
+                 sum += beats.get(you) == oppo ? points.get(you) + 6 : you == oppo ? points.get(you) + 3 : points.get(you);
              }
         } catch (NoSuchElementException e) {
             System.out.println("Sum of points: " + sum);
