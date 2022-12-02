@@ -23,18 +23,17 @@ public class rockpeepee {
         
         try {
             while (!(line = s.nextLine()).isEmpty()) {
-                 char opponent =  line.charAt(0);
+                 char oppo = line.charAt(0) == 'A' ? 'R' : line.charAt(0) == 'B' ? 'P' : line.charAt(0) == 'C' ? 'S' : 0;
                  char you = line.charAt(2);
-                 opponent = opponent == 'A' ? 'R' : opponent == 'B' ? 'P' : opponent == 'C' ? 'S' : 0;
 
                  // Part one
                  //you = you == 'X' ? 'R' : you == 'Y' ? 'P' : you == 'Z' ? 'S' : 0;
      
                  // Part two
-                 you = you == 'X' ? beats.get(opponent) : you == 'Y' ? opponent : you == 'Z' ? opponent == 'R' ? 'P' : opponent == 'P' ? 'S' : opponent == 'S' ? 'R' : 0 : 0;
+                 you = you == 'X' ? beats.get(oppo) : you == 'Y' ? oppo : you == 'Z' ? oppo == 'R' ? 'P' : oppo == 'P' ? 'S' : oppo == 'S' ? 'R' : 0 : 0;
                  
                  sum += points.get(you);
-                 sum += beats.get(you) == opponent ? 6 : you == opponent ? 3 : 0;
+                 sum += beats.get(you) == oppo ? 6 : you == oppo ? 3 : 0;
              }
         } catch (NoSuchElementException e) {
             System.out.println("Sum of points: " + sum);
