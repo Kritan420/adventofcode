@@ -15,7 +15,7 @@ public class tunaOne {
         int mark = 3;
         int pos = 0;
 
-        while (size < 4 && mark < 4095) {
+        while (size < 4) {
 
             marker.clear();
 
