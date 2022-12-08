@@ -106,7 +106,7 @@ public class treeOne {
                 }
             }
         }
-        System.out.println("visibleCount = " + visibleCount);
+        System.out.println("\nvisibleCount = " + visibleCount + "\n");
 
     }
 
