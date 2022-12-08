@@ -1,15 +1,15 @@
 package dec7;
 
 import java.io.*;
-import java.security.Key;
+//import java.security.Key;
 import java.util.*;
-import java.util.regex.Pattern;
+//import java.util.regex.Pattern;
 
-import javax.swing.event.SwingPropertyChangeSupport;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreeNode;
+//import javax.swing.event.SwingPropertyChangeSupport;
+//import javax.swing.tree.DefaultMutableTreeNode;
+//import javax.swing.tree.TreeNode;
 
-import org.w3c.dom.Node;
+//import org.w3c.dom.Node;
 
 class Folders {
     Folders parent;
