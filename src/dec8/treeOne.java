@@ -28,8 +28,8 @@ public class treeOne {
         Map<String, Integer> edge = new HashMap<String, Integer>();
 
         for (int i = 0; i < map.length; i++) {
-            edge.put("r" + "0" + "c" + +i, map[0][i]);
-            edge.put("r" + "98" + "c" + +i, map[98][i]);
+            edge.put("r" + "0" + "c" + i, map[0][i]);
+            edge.put("r" + "98" + "c" + i, map[98][i]);
             edge.put("r" + i + "c" + "0", map[i][0]);
             edge.put("r" + i + "c" + "98", map[i][98]);
         }
@@ -42,7 +42,6 @@ public class treeOne {
             for (col = 1; col < L; col++) {
 
                 // visible true , sätt false om fail 
-                boolean vis = true;
                 boolean[] visB = new boolean[4]; //W E N S
                 visB[0] = true;
                 visB[1] = true;
@@ -97,13 +96,9 @@ public class treeOne {
                     }
                 }
 
-                if (!visB[0] && !visB[1] && !visB[2] && !visB[3]) { // if still visible in any W E N S
-                    vis = false;
-                } else if (vis) {
-                    // System.out.println("r"+(row)+"c"+(col) + "("+map[row][col]+")" + " är " + vis
-                    // +" |" + " W:"+visB[0] + " E:"+visB[1] + " N:"+visB[2] + " S:"+visB[3]);
+                if (visB[0] || visB[1] || visB[2] || visB[3]) { // if still visible in any W E N S
                     visibleCount++;
-                }
+                } 
             }
         }
         System.out.println("\nvisibleCount = " + visibleCount + "\n");
