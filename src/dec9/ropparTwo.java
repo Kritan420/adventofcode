@@ -1,20 +1,27 @@
 package dec9;
 
+import java.awt.Point;
 import java.io.*;
 import java.util.*;
 
 public class ropparTwo {
 
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("./src/dec9/input2.txt"));
+        Scanner sc = new Scanner(new File("./src/dec9/input.txt"));
 
         String line = null;
         String[] hMove = new String[2];
         ArrayList<String[]> hMoves = new ArrayList<>();
-        int[][] knots = new int[10][2];
         Map<String, Integer> tVis = new LinkedHashMap<>();
 
-        // int[] tail = new int[2];
+        ArrayList<Point> ps = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            ps.add(new Point());
+            ps.get(i).setLocation(0, 0);
+        }
+
+        System.out.println(ps.get(0));
 
         while (sc.hasNextLine()) {
             line = sc.nextLine();
@@ -28,135 +35,69 @@ public class ropparTwo {
 
             for (int s = 0; s < steps; s++) {
                 if (direction.equals("L")) {
-                    knots[0][0]--;
+                    ps.get(0).x--;
                 }
                 if (direction.equals("R")) {
-                    knots[0][0]++;
+                    ps.get(0).x++;
                 }
                 if (direction.equals("U")) {
-                    knots[0][1]--;
+                    ps.get(0).y--;
                 }
                 if (direction.equals("D")) {
-                    knots[0][1]++;
+                    ps.get(0).y++;
                 }
 
-                for (int k = 1; k < knots.length; k++) {
+                for (int k = 1; k < ps.size(); k++) {
 
-                    int dx = Math.abs(knots[k][0] - knots[k - 1][0]);
-                    int dy = Math.abs(knots[k][1] - knots[k - 1][1]);
-                    int distance = (int) Math.sqrt(dy * dy + dx * dx);
+                    double distance = ps.get(k - 1).distance(ps.get(k));
 
-                    if (direction.equals("L")) {
-                        if (distance > 1) {
-                            if (knots[k][1] != knots[k - 1][1]) {
-                                if (knots[k - 1][1] > knots[k][1]) {
-                                    knots[k][1] += 1;
-                                } else {
-                                    knots[k][1] -= 1;
-                                }
-                                if (knots[k][0] != knots[k - 1][0]) {
-                                    if (knots[k - 1][0] > knots[k][0]) {
-                                        knots[k][0] += 1;
-                                    } else {
-                                        knots[k][0] -= 1;
-                                    }
-                                }
-                            } else {
-                                knots[k][0] -= 1;
-                            }
-                        }
-                        if (k == 9) {
-                            tVis.put("x" + knots[k][0] +"|"+"y"+ knots[k][1], i);
-                        }
-
+                    if (distance > 1.42) {
+                        moveT(ps.get(k - 1), ps.get(k));
                     }
-
-                    if (direction.equals("R")) {
-                        if (distance > 1) {
-                            if (knots[k][1] != knots[k - 1][1]) {
-                                if (knots[k - 1][1] > knots[k][1]) {
-                                    knots[k][1] += 1;
-                                } else {
-                                    knots[k][1] -= 1;
-                                }
-                                if (knots[k][0] != knots[k - 1][0]) {
-                                    if (knots[k - 1][0] > knots[k][0]) {
-                                        knots[k][0] += 1;
-                                    } else {
-                                        knots[k][0] -= 1;
-                                    }
-                                }
-                            } else {
-                                knots[k][0] += 1;
-                            }
-                        }
-                        if (k == 9) {
-                            tVis.put("x" + knots[k][0] +"|"+"y"+ knots[k][1], i);
-                        }
-
+                    if (k == 9) {
+                        tVis.put("x" + ps.get(9).getX() +"|"+"y"+ ps.get(9).getY() , i);
                     }
-
-
-                    if (direction.equals("U")) {
-
-                        if (distance > 1) {
-                            if (knots[k][0] != knots[k - 1][0]) {
-                                if (knots[k - 1][0] > knots[k][0]) {
-                                    knots[k][0] += 1;
-                                } else {
-                                    knots[k][0] -= 1;
-                                }
-                                if (knots[k][1] != knots[k - 1][1]) {
-                                    if (knots[k - 1][1] > knots[k][1]) {
-                                        knots[k][0] += 1;
-                                    } else {
-                                        knots[k][0] -= 1;
-                                    }
-                                }
-                            } else {
-                                knots[k][1] -= 1;
-                            }
-                        }
-                        if (k == 9) {
-                            tVis.put("x" + knots[k][0] +"|"+"y"+ knots[k][1], i);
-                        }
-
-                    }
-                    if (direction.equals("D")) {
-                        
-                        if (distance > 1) {
-                            if (knots[k][0] != knots[k - 1][0]) {
-                                if (knots[k - 1][0] > knots[k][0]) {
-                                    knots[k][0] += 1;
-                                } else {
-                                    knots[k][0] -= 1;
-                                }
-                                if (knots[k][1] != knots[k - 1][1]) {
-                                    if (knots[k - 1][1] > knots[k][1]) {
-                                        knots[k][0] += 1;
-                                    } else {
-                                        knots[k][0] -= 1;
-                                    }
-                                }
-                            } else {
-                                knots[k][1] += 1;
-                            }
-                        }
-                        if (k == 9) {
-                            tVis.put("x" + knots[k][0] +"|"+"y"+ knots[k][1], i);
-                        }
-
-
-                    }
-
                 }
 
-            } // steps
+            }
 
+        } // steps
+
+        for (String key : tVis.keySet()) {
+            System.out.println(tVis.get(key) + " " + key);
         }
+
         System.out.println(tVis.size());
     } // all moves
 
+    public static void moveT(Point h, Point t) {
+
+        if ((h.x == t.x) || (h.y == t.y)) {
+            if (h.x < t.x) {
+                --t.x;
+            } else if (h.x > t.x) {
+                ++t.x;
+            } else if (h.y < t.y) {
+                --t.y;
+            } else if (h.y > t.y) {
+                ++t.y;
+            }
+        } else {
+            if (h.x > t.x && h.y > t.y) {
+                ++t.x;
+                ++t.y;
+            } else if (h.x > t.x && h.y < t.y) {
+                ++t.x;
+                --t.y;
+            } else if (h.x < t.x && h.y > t.y) {
+                --t.x;
+                ++t.y;
+            } else if (h.x < t.x && h.y < t.y) {
+                --t.x;
+                --t.y;
+            }
+        }
+    }
 }
 
 /**
