@@ -74,27 +74,27 @@ public class ropparTwo {
 
         if ((h.x == t.x) || (h.y == t.y)) {
             if (h.x < t.x) {
-                --t.x;
+                t.x--;
             } else if (h.x > t.x) {
-                ++t.x;
+                t.x++;
             } else if (h.y < t.y) {
-                --t.y;
+                t.y--;
             } else if (h.y > t.y) {
-                ++t.y;
+                t.y++;
             }
         } else {
             if (h.x > t.x && h.y > t.y) {
-                ++t.x;
-                ++t.y;
+                t.x++;
+                t.y++;
             } else if (h.x > t.x && h.y < t.y) {
-                ++t.x;
-                --t.y;
+                t.x++;
+                t.y--;
             } else if (h.x < t.x && h.y > t.y) {
-                --t.x;
-                ++t.y;
+                t.x--;
+                t.y++;
             } else if (h.x < t.x && h.y < t.y) {
-                --t.x;
-                --t.y;
+                t.x--;
+                t.y--;
             }
         }
     }
