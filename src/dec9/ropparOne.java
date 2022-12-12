@@ -12,16 +12,16 @@ public class ropparOne {
         String[] hMove = new String[2];
         ArrayList<String[]> hMoves = new ArrayList<>();
         Map<String, Integer> tVis = new LinkedHashMap<String, Integer>();
-        int[] hPos = new int[2]; // x y
-        ArrayList<int[]> tails = new ArrayList<>();
 
-        for (int i = 0; i < 9; i++) {
-            tails.add(new int[2]);
-        }
+        //ArrayList<int[]> tails = new ArrayList<>();
 
-        //tails.get(8)
         
+
+
+
+        int[] hPos = new int[2];
         int[] tPos = new int[2]; // x y
+
 
         while (sc.hasNextLine()) {
             line = sc.nextLine();
@@ -29,15 +29,6 @@ public class ropparOne {
             hMoves.add(hMove);
         }
 
-        /**
-        ..##..
-        ...##.
-        .####.
-        ....#.
-        s###..
-
-        13
-         */
 
         for (int i = 0; i < hMoves.size(); i++) {
             
