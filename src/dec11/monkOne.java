@@ -98,14 +98,13 @@ public class monkOne {
             }
         }
 
-        System.out.println(monkeys.get(0).getItems().size());
 
         for (int i = 0; i < monkeys.size(); i++) {
 
-            ArrayList<Integer> temp = monkeys.get(i).getItems();
-
-            for (int j = 0; j < monkeys.get(i).getItems().size(); j++) {
-
+            ArrayList<Integer> temp = monkeys.get(i).items;
+            System.out.println(temp.size());
+            
+            for (int j = 0; j < temp.size(); j++) {
                 int worry = 0;
                 
                 int o = monkeys.get(i).getItems().get(j);
@@ -118,7 +117,6 @@ public class monkOne {
                 boolean tested = performTest(test, o);
 
                 int newM = 0;
-                System.out.println(o);
 
                 if (tested) {
                     temp.remove(j);
