@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 
-public class monkOne {
+public class monkTwo {
 
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(new File("./src/dec11/input2.txt"));
@@ -46,7 +46,7 @@ public class monkOne {
             }
         }
 
-        for (int round = 0; round < 20; round++) {
+        for (int round = 0; round < 10000; round++) {
 
        
         for (int i = 0; i < monkeys.size(); i++) {
@@ -56,13 +56,14 @@ public class monkOne {
             for (int j = 0; j < monkeys.get(i).getItems().size(); j++) {
                 monkeys.get(i).inspect++;
                 int o = monkeys.get(i).getItems().get(j);
+                
                 String operation = monkeys.get(i).operation;
 
                 o = performOp(operation, o);
                 String test = monkeys.get(i).test;
-                o = o / 3;
-                boolean tested = performTest(test, o);
 
+                boolean tested = performTest(test, o);
+                
                 int newM = 0;
 
                 if (tested) {
@@ -82,16 +83,6 @@ public class monkOne {
     for (int i = 0; i < monkeys.size(); i++) {
         System.out.println(monkeys.get(i).name + " inspected items " + monkeys.get(i).inspect + " times.");
     }
-
-        /**
-        for (int i = 0; i < monkeys.size(); i++) {
-            System.out.print(monkeys.get(i).name + ": " ); 
-            for (int j = 0; j < monkeys.get(i).getItems().size(); j++) {
-
-                System.out.print(monkeys.get(i).getItems().get(j) + ",");
-            }
-            System.out.println();
-        } */
 
     }
 
