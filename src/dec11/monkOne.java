@@ -10,6 +10,7 @@ class Monkey {
     public String test;
     public String ifTrue;
     public String ifFalse;
+    public int inspect;
 
     public Monkey(int i) {
         this.name = "Monkey " + i;
@@ -59,7 +60,7 @@ class Monkey {
 public class monkOne {
 
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(new File("./src/dec11/input2.txt"));
+        Scanner sc = new Scanner(new File("./src/dec11/input.txt"));
 
         ArrayList<Monkey> monkeys = new ArrayList<>();
 
@@ -98,15 +99,15 @@ public class monkOne {
             }
         }
 
+        for (int round = 0; round < 20; round++) {
 
+       
         for (int i = 0; i < monkeys.size(); i++) {
-
-            ArrayList<Integer> temp = monkeys.get(i).items;
-            System.out.println(temp.size());
             
-            for (int j = 0; j < temp.size(); j++) {
-                int worry = 0;
-                
+            ArrayList<Integer> remove = new ArrayList<>();
+
+            for (int j = 0; j < monkeys.get(i).getItems().size(); j++) {
+                monkeys.get(i).inspect++;
                 int o = monkeys.get(i).getItems().get(j);
                 String operation = monkeys.get(i).operation;
 
@@ -119,18 +120,24 @@ public class monkOne {
                 int newM = 0;
 
                 if (tested) {
-                    temp.remove(j);
+                    remove.add(monkeys.get(i).getItems().get(j));
                     newM = Integer.parseInt(monkeys.get(i).ifTrue.substring(16));
                     monkeys.get(newM).addItem(o);
                 } else {
-                    temp.remove(j);
+                    remove.add(monkeys.get(i).getItems().get(j));
                     newM = Integer.parseInt(monkeys.get(i).ifFalse.substring(16));
                     monkeys.get(newM).addItem(o);
                 }
             }
-            monkeys.get(i).items = temp;
+            monkeys.get(i).items.removeAll(remove);
         }
+    }
 
+    for (int i = 0; i < monkeys.size(); i++) {
+        System.out.println(monkeys.get(i).name + " inspected items " + monkeys.get(i).inspect + " times.");
+    }
+
+        /**
         for (int i = 0; i < monkeys.size(); i++) {
             System.out.print(monkeys.get(i).name + ": " ); 
             for (int j = 0; j < monkeys.get(i).getItems().size(); j++) {
@@ -138,7 +145,7 @@ public class monkOne {
                 System.out.print(monkeys.get(i).getItems().get(j) + ",");
             }
             System.out.println();
-        }
+        } */
 
     }
 
